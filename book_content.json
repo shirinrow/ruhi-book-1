@@ -1,0 +1,835 @@
+[
+    {
+        "id": 0,
+        "type": "chapter",
+        "english": "Unit 1: Understanding the Bahá'í Writings",
+        "farsi": "بخش ۱: درک کلام الهی",
+        "audio_filename": "audio_unit1_0.mp3"
+    },
+    {
+        "id": 1,
+        "type": "intro",
+        "english": "The purpose of this unit is to assist you in developing and strengthening the habit of reading passages from the Holy Writings every day and reflecting on their meaning. As you already know, reading the Holy Writings is one of the ordinances of our Faith. We have been commanded to read the Word of God every morning and evening.",
+        "farsi": "هدف از این واحد کمک به شماست تا عادت خواندن نصوصی از آثار مبارکه در هر روز و تأمل در باره معنای آنها را در خود ایجاد و تقویت کنید. چنانچه میدانید تلاوت آیات الهی یکی از احکام ایمان ماست. به ما امر شده است که هر صبح و شام آیات الهی را بخوانیم.",
+        "audio_filename": "audio_unit1_1.mp3"
+    },
+    {
+        "id": 2,
+        "type": "intro",
+        "english": "The betterment of the world can be accomplished through pure and goodly deeds, through commendable and seemly conduct.",
+        "farsi": "اصلاح عالم از اعمال طیبه طاهره و اخلاق راضیه مرضیه بوده.",
+        "audio_filename": "audio_unit1_2.mp3"
+    },
+    {
+        "id": 3,
+        "type": "exercise",
+        "english": "How can the betterment of the world be accomplished?",
+        "farsi": "اصلاح عالم چطور حاصل می شود؟",
+        "audio_filename": "audio_unit1_3.mp3"
+    },
+    {
+        "id": 4,
+        "type": "intro",
+        "english": "Beware, O people of Bahá, lest ye walk in the ways of them whose words differ from their deeds.",
+        "farsi": "یا ملأ البهاء لا تکونوا بمثل الذین یقولون ما لا یفعلونه فی انفسهم. ای اهل بهاء مانند کسانی نباشید که می گویند آنچه خودشان نمی کنند.",
+        "audio_filename": "audio_unit1_4.mp3"
+    },
+    {
+        "id": 5,
+        "type": "exercise",
+        "english": "In whose ways should we not walk?",
+        "farsi": "مانند چه کسانی نباید باشیم؟",
+        "audio_filename": "audio_unit1_5.mp3"
+    },
+    {
+        "id": 6,
+        "type": "intro",
+        "english": "O Son of Being! Bring thyself to account each day ere thou art summoned to a reckoning.",
+        "farsi": "یا ابن الوجود حاسب نفسک فی کل یوم من قبل ان تحاسب. ای پسر وجود قبل از این که به حساب تو رسیدگی شود هر روز خود را مورد محاسبه قرار بده.",
+        "audio_filename": "audio_unit1_6.mp3"
+    },
+    {
+        "id": 7,
+        "type": "exercise",
+        "english": "What should we do before we are summoned to a reckoning?",
+        "farsi": "قبل از این که به حساب مان رسیدگی شود، باید چه کنیم؟",
+        "audio_filename": "audio_unit1_7.mp3"
+    },
+    {
+        "id": 8,
+        "type": "intro",
+        "english": "Say: O brethren! Let deeds, not words, be your adorning.",
+        "farsi": "بگو ای برادران به اعمال خود را بیارایید نه به اقوال.",
+        "audio_filename": "audio_unit1_8.mp3"
+    },
+    {
+        "id": 9,
+        "type": "exercise",
+        "english": "What should be our true adorning?",
+        "farsi": "به چه چیز باید خود را بیاراییم؟",
+        "audio_filename": "audio_unit1_9.mp3"
+    },
+    {
+        "id": 10,
+        "type": "intro",
+        "english": "Holy words and pure and goodly deeds ascend unto the heaven of celestial glory.",
+        "farsi": "کلمه طیبه و اعمال طاهره مقدسه به سماء عز احدیه صعود نماید.",
+        "audio_filename": "audio_unit1_10.mp3"
+    },
+    {
+        "id": 11,
+        "type": "exercise",
+        "english": "What do holy words and pure and goodly deeds do?",
+        "farsi": "کلمه طیبه و اعمال طاهره مقدسه چه می شوند؟",
+        "audio_filename": "audio_unit1_11.mp3"
+    },
+    {
+        "id": 12,
+        "type": "chapter",
+        "english": "Good Deeds",
+        "farsi": "بخش ۲: اعمال صالحه",
+        "audio_filename": "audio_unit1_12.mp3"
+    },
+    {
+        "id": 13,
+        "type": "intro",
+        "english": "Below are a number of exercises related to the quotations you have just read. They are intended to help you reflect further on the significance of the passages. You should try to answer them and then check your answers with the other members of your study circle.",
+        "farsi": "در زیر تمرینهایی در ارتباط با نصوصی که مطالعه کردید آمده است. این تمرین ها را نباید به صورت مکانیکی انجام داد. باید سعی کنید به آنها پاسخ دهید و سپس پاسخهای خود را با سایر اعضای حلقه مطالعه چک کنید.",
+        "audio_filename": "audio_unit1_13.mp3"
+    },
+    {
+        "id": 14,
+        "type": "exercise",
+        "english": "When something is 'commendable', it is worthy of praise. Which of the following are commendable?\n\n* To be a good worker\n* To respect others\n* To be studious\n* To be a liar\n* To be lazy\n* To serve others",
+        "farsi": "وقتی چیزی «مرضیه» است پسندیده و ستودنی میباشد کدام یک از موارد زیر مرضیه است؟\n\n* کارگر خوبی بودن\n* به دیگران احترام گذاشتن\n* درس خوان بودن\n* دروغگو بودن\n* تنبل بودن\n* به دیگران خدمت کردن",
+        "audio_filename": "audio_unit1_14.mp3"
+    },
+    {
+        "id": 15,
+        "type": "exercise",
+        "english": "What does the phrase 'ere thou art summoned to a reckoning' mean?",
+        "farsi": "من قبل ان تحاسب (قبل از این که به حساب تو رسیدگی شود) یعنی چه؟",
+        "audio_filename": "audio_unit1_15.mp3"
+    },
+    {
+        "id": 16,
+        "type": "exercise",
+        "english": "Which of the following statements are true?\n\n* There are so few good people in the world that their actions do not have any effect.\n* Something is correct when it is in agreement with the opinions of other people.\n* Something is correct when it is in agreement with the teachings of God.",
+        "farsi": "کدام یک از گزاره های زیر درست است؟\n\n* تعداد افراد خوب در جهان آن قدر کم است که اقدامات آنها هیچ تأثیری ندارد\n* وقتی چیزی موافق نظرات دیگران باشد درست است\n* وقتی چیزی موافق تعاليم الهي باشد درست است",
+        "audio_filename": "audio_unit1_16.mp3"
+    },
+    {
+        "id": 17,
+        "type": "exercise",
+        "english": "Which of the following are pure and goodly deeds?\n\n* Taking care of and teaching children\n* Stealing\n* Praying for the progress of others\n* Telling a small lie to get out of trouble\n* Helping others and expecting a reward",
+        "farsi": "کدام یک از موارد زیر اعمال طاهره مقدسه است؟\n\n* مراقبت از کودکان و تدریس به آنها\n* دزدی\n* دعا جهت ترقی دیگران\n* گفتن دروغی کوچک جهت خلاصی از دردسر\n* کمک به دیگران و انتظار پاداش",
+        "audio_filename": "audio_unit1_17.mp3"
+    },
+    {
+        "id": 18,
+        "type": "exercise",
+        "english": "In which of the following situations do the words of the person differ from his or her deeds?\n\n* Someone keeps repeating that we should all be united but behaves in a way that creates conflict.\n* Someone praises the value of a chaste life but has sexual relations outside of marriage.\n* Someone consumes alcohol occasionally, while professing to follow a religious faith that prohibits drinking.\n* Someone advocates the equality of men and women but, as an employer, pays women less than men for the same job.",
+        "farsi": "در کدام یک از موقعیتهای زیر قول فرد با عمل او متفاوت است؟\n\n* فردی مدام تکرار میکند که همه ما باید متحد باشیم اما به نحوی رفتار می کند که تضاد و تعارض ایجاد میکند.\n* فردی ارزش زندگی عفیف داشتن را می ستاید اما روابط جنسی خارج از ازدواج دارد.\n* فردی با اینکه ادعای پیروی از دینی را دارد که نوشیدن الکل در آن منع شده، گاه الکل می نوشد.\n* فردی از برابری مردان و زنان دفاع میکند اما به عنوان کارفرما برای کار یکسان، به زنان کمتر از مردان دستمزد می پردازد.",
+        "audio_filename": "audio_unit1_18.mp3"
+    },
+    {
+        "id": 19,
+        "type": "exercise",
+        "english": "Is it permissible for a Bahá'í to confess to another person?",
+        "farsi": "آیا مجاز است که یک بهائی نزد فردی دیگر به گناه خود اعتراف کند؟",
+        "audio_filename": "audio_unit1_19.mp3"
+    },
+    {
+        "id": 20,
+        "type": "exercise",
+        "english": "What should he or she do instead of confessing?",
+        "farsi": "به جای اقرار به گناه چه باید انجام دهد؟",
+        "audio_filename": "audio_unit1_20.mp3"
+    },
+    {
+        "id": 21,
+        "type": "exercise",
+        "english": "What does the phrase 'the heaven of celestial glory' mean?",
+        "farsi": "عبارت «سماء عز احدیه» به چه معنا است؟",
+        "audio_filename": "audio_unit1_21.mp3"
+    },
+    {
+        "id": 22,
+        "type": "exercise",
+        "english": "What effect do bad deeds have on the world?",
+        "farsi": "اعمال بد چه تأثیری بر جهان دارد؟",
+        "audio_filename": "audio_unit1_22.mp3"
+    },
+    {
+        "id": 23,
+        "type": "exercise",
+        "english": "What effect do bad deeds have on those who commit them?",
+        "farsi": "اعمال بد چه تأثیری بر کسانی که آنها را مرتکب می شوند دارد؟",
+        "audio_filename": "audio_unit1_23.mp3"
+    },
+    {
+        "id": 24,
+        "type": "chapter",
+        "english": "Truthfulness",
+        "farsi": "بخش ۳: راستی و درستی",
+        "audio_filename": "audio_unit1_24.mp3"
+    },
+    {
+        "id": 25,
+        "type": "intro",
+        "english": "Truthfulness is the foundation of all human virtues.",
+        "farsi": "صدق و راستی اساس جميع فضائل انسانی است.",
+        "audio_filename": "audio_unit1_25.mp3"
+    },
+    {
+        "id": 26,
+        "type": "exercise",
+        "english": "What is the foundation of all human virtues?",
+        "farsi": "اساس جميع فضائل انسانی چیست؟",
+        "audio_filename": "audio_unit1_26.mp3"
+    },
+    {
+        "id": 27,
+        "type": "intro",
+        "english": "Without truthfulness progress and success, in all the worlds of God, are impossible for any soul.",
+        "farsi": "اگر نفسی از آن صدق و راستی محروم ماند از ترقی و تعالی در کلیه عوالم الهی ممنوع گردد.",
+        "audio_filename": "audio_unit1_27.mp3"
+    },
+    {
+        "id": 28,
+        "type": "exercise",
+        "english": "What is impossible without truthfulness?",
+        "farsi": "اگر نفسی از آن محروم ماند چه چیز غیر ممکن است؟",
+        "audio_filename": "audio_unit1_28.mp3"
+    },
+    {
+        "id": 29,
+        "type": "intro",
+        "english": "Beautify your tongues, O people, with truthfulness, and adorn your souls with the ornament of honesty.",
+        "farsi": "قل يا قوم زينوا لسانكم بالصدق و نفوسكم بالأمانة. بگو ای مردم، زبانتان را به راستی و نفستان را به امانت آراسته سازید.",
+        "audio_filename": "audio_unit1_29.mp3"
+    },
+    {
+        "id": 30,
+        "type": "exercise",
+        "english": "With what should we beautify our tongues?",
+        "farsi": "به چه چیز باید زبان خود را زینت دهیم؟",
+        "audio_filename": "audio_unit1_30.mp3"
+    },
+    {
+        "id": 31,
+        "type": "exercise",
+        "english": "With what should we adorn our souls?",
+        "farsi": "به چه چیز باید نفس خود را آراسته نماییم؟",
+        "audio_filename": "audio_unit1_31.mp3"
+    },
+    {
+        "id": 32,
+        "type": "intro",
+        "english": "Let your eye be chaste, your hand faithful, your tongue truthful and your heart enlightened.",
+        "farsi": "در نگاه پرهیزگار باشید در دست امین در زبان راستگو و در قلب متذکر.",
+        "audio_filename": "audio_unit1_32.mp3"
+    },
+    {
+        "id": 33,
+        "type": "exercise",
+        "english": "How should our eye be?",
+        "farsi": "نگاه ما باید چگونه باشد؟",
+        "audio_filename": "audio_unit1_33.mp3"
+    },
+    {
+        "id": 34,
+        "type": "exercise",
+        "english": "Our hand?",
+        "farsi": "دستمان چطور؟",
+        "audio_filename": "audio_unit1_34.mp3"
+    },
+    {
+        "id": 35,
+        "type": "exercise",
+        "english": "Our tongue?",
+        "farsi": "زبان مان چطور؟",
+        "audio_filename": "audio_unit1_35.mp3"
+    },
+    {
+        "id": 36,
+        "type": "exercise",
+        "english": "Our heart?",
+        "farsi": "و قلب مان چگونه؟",
+        "audio_filename": "audio_unit1_36.mp3"
+    },
+    {
+        "id": 37,
+        "type": "intro",
+        "english": "They who dwell within the tabernacle of God, and are established upon the seats of everlasting glory, will refuse, though they be dying of hunger, to stretch their hands and seize unlawfully the property of their neighbor, however vile and worthless he may be.",
+        "farsi": "قسم به آفتاب افق تقدیس که اگر جمیع عالم از ذهب و فضه شود نفسی که فی الحقیقه به ملکوت ایمان ارتقا جسته ابدا به آن توجه ننماید تا چه رسد به اخذ آن.",
+        "audio_filename": "audio_unit1_37.mp3"
+    },
+    {
+        "id": 38,
+        "type": "exercise",
+        "english": "What should we refuse to do even if we are dying of hunger?",
+        "farsi": "اگر جمیع عالم از ذهب و فضه شود باید از چه کاری خودداری کنیم؟",
+        "audio_filename": "audio_unit1_38.mp3"
+    },
+    {
+        "id": 39,
+        "type": "chapter",
+        "english": "Conflict and Contention",
+        "farsi": "بخش ۵: لسان شفقت",
+        "audio_filename": "audio_unit1_39.mp3"
+    },
+    {
+        "id": 40,
+        "type": "intro",
+        "english": "A kindly tongue is the lodestone of the hearts of men. It is the bread of the spirit, it clotheth the words with meaning, it is the fountain of the light of wisdom and understanding.",
+        "farsi": "لسان شفقت جذاب قلوب است و مائده روح و بمثابه معانیست از برای الفاظ و مانند افق است از برای اشراق آفتاب حکمت و دانایی.",
+        "audio_filename": "audio_unit1_40.mp3"
+    },
+    {
+        "id": 41,
+        "type": "exercise",
+        "english": "How can a kindly tongue be described?",
+        "farsi": "لسان شفقت را چطور می توان توصیف نمود؟",
+        "audio_filename": "audio_unit1_41.mp3"
+    },
+    {
+        "id": 42,
+        "type": "exercise",
+        "english": "What effect does a kindly tongue have on words?",
+        "farsi": "لسان شفقت چه تأثیری بر الفاظ دارد؟",
+        "audio_filename": "audio_unit1_42.mp3"
+    },
+    {
+        "id": 43,
+        "type": "intro",
+        "english": "O ye beloved of the Lord! In this sacred Dispensation, conflict and contention are in no wise permitted. Every aggressor deprives himself of God's grace.",
+        "farsi": "ای احبای الهی در این دور مقدس نزاع و جدال ممنوع و هر متعدی محروم.",
+        "audio_filename": "audio_unit1_43.mp3"
+    },
+    {
+        "id": 44,
+        "type": "exercise",
+        "english": "According to the above quotation, what is not permitted in this Dispensation?",
+        "farsi": "طبق نص بالا، چه چیزی در این دور ممنوع است؟",
+        "audio_filename": "audio_unit1_44.mp3"
+    },
+    {
+        "id": 45,
+        "type": "exercise",
+        "english": "What does the aggressor do to himself?",
+        "farsi": "شخص متعدی با خود چه میکند؟",
+        "audio_filename": "audio_unit1_45.mp3"
+    },
+    {
+        "id": 46,
+        "type": "intro",
+        "english": "Nothing whatever can, in this Day, inflict a greater harm upon this Cause than dissension and strife, contention, estrangement and apathy, among the loved ones of God.",
+        "farsi": "حق شاهد و گواه است که ضری از برای این امر الیوم اعظم از فساد و نزاع و جدال و کدورت و برودت مابین احباب نبوده و نیست.",
+        "audio_filename": "audio_unit1_46.mp3"
+    },
+    {
+        "id": 47,
+        "type": "exercise",
+        "english": "What conditions inflict the greatest harm on the Cause of God?",
+        "farsi": "چه شرایطی اعظم ضر و بزرگترین ضرر برای امر الهی بوده و هست؟",
+        "audio_filename": "audio_unit1_47.mp3"
+    },
+    {
+        "id": 48,
+        "type": "intro",
+        "english": "Do not be content with showing friendship in words alone, let your heart burn with loving kindness for all who may cross your path.",
+        "farsi": "به اظهار دوستی و محبت که فقط با الفاظ باشد قانع نشوید بگذارید قلبتان با محبت خالصانه نسبت به تمام افرادی که در راهتان میگذرند مشتعل باشد.",
+        "audio_filename": "audio_unit1_48.mp3"
+    },
+    {
+        "id": 49,
+        "type": "exercise",
+        "english": "What kind of friendship should not satisfy us?",
+        "farsi": "چه نوع دوستی نباید ما را راضی کند؟",
+        "audio_filename": "audio_unit1_49.mp3"
+    },
+    {
+        "id": 50,
+        "type": "exercise",
+        "english": "What should burn brightly in our heart?",
+        "farsi": "قلب مان باید به چه مشتعل گردد؟",
+        "audio_filename": "audio_unit1_50.mp3"
+    },
+    {
+        "id": 51,
+        "type": "intro",
+        "english": "When a thought of war comes, oppose it by a stronger thought of peace. A thought of hatred must be destroyed by a more powerful thought of love.",
+        "farsi": "چون فکر جنگ آید آن را با فکر قوی تر صلح مقابله کنید فکر نفرت را با فکر قوی تر عشق نابود سازید.",
+        "audio_filename": "audio_unit1_51.mp3"
+    },
+    {
+        "id": 52,
+        "type": "exercise",
+        "english": "With what should a thought of war be opposed?",
+        "farsi": "فکر جنگ را باید با چه مقابله نمود؟",
+        "audio_filename": "audio_unit1_52.mp3"
+    },
+    {
+        "id": 53,
+        "type": "exercise",
+        "english": "With what should a thought of hate be destroyed?",
+        "farsi": "فکر نفرت را باید با چه نابود ساخت؟",
+        "audio_filename": "audio_unit1_53.mp3"
+    },
+    {
+        "id": 54,
+        "type": "chapter",
+        "english": "Backbiting",
+        "farsi": "بخش ۷: غیبت",
+        "audio_filename": "audio_unit1_54.mp3"
+    },
+    {
+        "id": 55,
+        "type": "intro",
+        "english": "...backbiting quencheth the light of the heart, and extinguisheth the life of the soul.",
+        "farsi": "غیبت سراج منیر قلب را خاموش نماید و حیات دل را بمیراند.",
+        "audio_filename": "audio_unit1_55.mp3"
+    },
+    {
+        "id": 56,
+        "type": "intro",
+        "english": "Breathe not the sins of others so long as thou art thyself a sinner.",
+        "farsi": "تا خود خطاکاری به خطای احدی دم مزن.",
+        "audio_filename": "audio_unit1_56.mp3"
+    },
+    {
+        "id": 57,
+        "type": "intro",
+        "english": "Speak no evil, that thou mayest not hear it spoken unto thee, and magnify not the faults of others that thine own faults may not appear great.",
+        "farsi": "بد مگو تا نشنوی و عیب مردم را بزرگ مدان تا عیب تو بزرگ ننماید.",
+        "audio_filename": "audio_unit1_57.mp3"
+    },
+    {
+        "id": 58,
+        "type": "intro",
+        "english": "O Son of Being! How couldst thou forget thine own faults and busy thyself with the faults of others?",
+        "farsi": "ای پسر وجود چگونه عیوب خود را فراموش کردی و به عیوب بندگان من مشغول شدی.",
+        "audio_filename": "audio_unit1_58.mp3"
+    },
+    {
+        "id": 59,
+        "type": "exercise",
+        "english": "What effect does backbiting have on the one who backbites?",
+        "farsi": "غیبت چه اثری بر فرد غیبت کننده می گذارد؟",
+        "audio_filename": "audio_unit1_59.mp3"
+    },
+    {
+        "id": 60,
+        "type": "exercise",
+        "english": "What should we think of before breathing the sins of others?",
+        "farsi": "قبل از آن که به خطاهای دیگران دم زنیم باید به چه چیز فکر کنیم؟",
+        "audio_filename": "audio_unit1_60.mp3"
+    },
+    {
+        "id": 61,
+        "type": "exercise",
+        "english": "What will happen to us if we magnify the faults of others?",
+        "farsi": "اگر عیب دیگران را بزرگ دانیم چه بر سر ما خواهد آمد؟",
+        "audio_filename": "audio_unit1_61.mp3"
+    },
+    {
+        "id": 62,
+        "type": "exercise",
+        "english": "What should we remember when we think of other people's faults?",
+        "farsi": "وقتی به عیوب دیگران فکر میکنیم چه چیز را باید به خاطر آوریم؟",
+        "audio_filename": "audio_unit1_62.mp3"
+    },
+    {
+        "id": 63,
+        "type": "chapter",
+        "english": "Unit 2: Prayer",
+        "farsi": "بخش ۱: دعا و مناجات",
+        "audio_filename": "audio_unit1_63.mp3"
+    },
+    {
+        "id": 64,
+        "type": "intro",
+        "english": "The courses of the Ruhi Institute are intended to help participants walk a path of service. We walk this path impelled by a twofold sense of purpose: to grow spiritually and intellectually and to contribute to the transformation of society.",
+        "farsi": "هدف از دوره های مؤسسه روحی کمک به شرکت کنندگان در پیمودن یک مسیر خدمت است. ما به واسطه یک حس هدفمندی دوجانبه یعنی رشد روحانی و فکری از یک سو و مشارکت در تحول اجتماع از سوی دیگر در این مسیر گام برمی داریم.",
+        "audio_filename": "audio_unit1_64.mp3"
+    },
+    {
+        "id": 65,
+        "type": "intro",
+        "english": "Do not busy yourselves in your own concerns; let your thoughts be fixed upon that which will rehabilitate the fortunes of mankind and sanctify the hearts and souls of men.",
+        "farsi": "به خود مشغول نباشید در فکر اصلاح عالم و تهذیب امم باشید.",
+        "audio_filename": "audio_unit1_65.mp3"
+    },
+    {
+        "id": 66,
+        "type": "exercise",
+        "english": "What should be the focus of our thoughts and concerns?",
+        "farsi": "تمرکز افکار و دغدغه های ما باید برچه باشد؟",
+        "audio_filename": "audio_unit1_66.mp3"
+    },
+    {
+        "id": 67,
+        "type": "intro",
+        "english": "A pure heart is as a mirror; cleanse it with the burnish of love and severance from all save God, that the true sun may shine therein and the eternal morning dawn.",
+        "farsi": "قلب لطیف به منزله آئینه است آن را به صیقل حب و انقطاع از ما سوی الله پاک کن تا آفتاب حقیقی در آن جلوه نماید و صبح ازلی طالع شود.",
+        "audio_filename": "audio_unit1_67.mp3"
+    },
+    {
+        "id": 68,
+        "type": "exercise",
+        "english": "With what should we cleanse the mirror of our heart?",
+        "farsi": "باید آینه قلب خود را به چه چیز پاک کنیم؟",
+        "audio_filename": "audio_unit1_68.mp3"
+    },
+    {
+        "id": 69,
+        "type": "intro",
+        "english": "O Son of Spirit! I created thee rich, why dost thou bring thyself down to poverty? Noble I made thee, wherewith dost thou abase thyself?",
+        "farsi": "ای پسر روح تو را غنی آفریدم چطور خود را فقیر میکنی و تو را عزیز ساختم، به چه رو خود را ذلیل میکنی؟",
+        "audio_filename": "audio_unit1_69.mp3"
+    },
+    {
+        "id": 70,
+        "type": "exercise",
+        "english": "Out of the essence of knowledge I gave thee being, why seekest thou enlightenment from anyone beside Me?",
+        "farsi": "از جوهر علم تو را ظاهر کردم چرا از غیر من طلب علم میکنی؟",
+        "audio_filename": "audio_unit1_70.mp3"
+    },
+    {
+        "id": 71,
+        "type": "exercise",
+        "english": "Out of the clay of love I molded thee, how dost thou busy thyself with another?",
+        "farsi": "و از خاک عشق تو را شکل دادم چطور به غیر من مشغول میشوی؟",
+        "audio_filename": "audio_unit1_71.mp3"
+    },
+    {
+        "id": 72,
+        "type": "chapter",
+        "english": "The Impulse to Pray",
+        "farsi": "بخش: انگیزه دعا",
+        "audio_filename": "audio_unit1_72.mp3"
+    },
+    {
+        "id": 73,
+        "type": "intro",
+        "english": "In the highest prayer, men pray only for the love of God, not because they fear Him or hell, or hope for bounty or heaven.",
+        "farsi": "در والاترین حالت دعا انسان فقط برای محبت الهی دعا میکند نه از جهت خوف از او یا نار جهنم و نه بامید نعیم و جنت.",
+        "audio_filename": "audio_unit1_73.mp3"
+    },
+    {
+        "id": 74,
+        "type": "intro",
+        "english": "The spiritual man finds no delight in anything save in commemoration of God.",
+        "farsi": "شخص روحانی به هیچ چیز مسرت نیابد مگر به ذکر الهی.",
+        "audio_filename": "audio_unit1_74.mp3"
+    },
+    {
+        "id": 75,
+        "type": "exercise",
+        "english": "Why do we pray? (According to 'Abdu'l-Bahá)",
+        "farsi": "چرا دعا میکنیم؟",
+        "audio_filename": "audio_unit1_75.mp3"
+    },
+    {
+        "id": 76,
+        "type": "intro",
+        "english": "If one friend loves another, is it not natural that he should wish to say so? Though he knows that that friend is aware of his love, does he still not wish to tell him of it?",
+        "farsi": "اگر دوستی به دیگری محبت دارد طبیعی نیست که بخواهد آن محبت را ابراز دهد؟ با آنکه می داند دوستش از محبت او آگاه است آیا با وجود این تمایل ندارد احساسات خویش را به او بیان کند؟",
+        "audio_filename": "audio_unit1_76.mp3"
+    },
+    {
+        "id": 77,
+        "type": "exercise",
+        "english": "What does the impulse to pray spring from?",
+        "farsi": "انگیزه و عواطفی که انسان را به مناجات با حق دلالت میکند ناشی از چیست؟",
+        "audio_filename": "audio_unit1_77.mp3"
+    },
+    {
+        "id": 78,
+        "type": "chapter",
+        "english": "Effects of Prayer",
+        "farsi": "بخش: تأثیر دعا",
+        "audio_filename": "audio_unit1_78.mp3"
+    },
+    {
+        "id": 79,
+        "type": "intro",
+        "english": "I beseech Thee... to make of my prayer a fire that will burn away the veils which have shut me out from Thy beauty, and a light that will lead me unto the ocean of Thy Presence.",
+        "farsi": "از تو میخواهم نمازم را آتشی قرار دهی تا حجبات مرا که مرا از دیدار جمال تو ممانعت کرد بسوزاند و نوری قرار دهی که مرا به دریای وصال تو رهنمون شود.",
+        "audio_filename": "audio_unit1_79.mp3"
+    },
+    {
+        "id": 80,
+        "type": "exercise",
+        "english": "In what sense can prayer be like a fire? What does it consume?",
+        "farsi": "نماز از چه نظر میتواند مانند آتش باشد؟ چه چیزی را می سوزاند؟",
+        "audio_filename": "audio_unit1_80.mp3"
+    },
+    {
+        "id": 81,
+        "type": "exercise",
+        "english": "Mention some veils that shut us out from God.",
+        "farsi": "بعضی حجباتی که ما را از خدا منع میکند ذکر نمایید.",
+        "audio_filename": "audio_unit1_81.mp3"
+    },
+    {
+        "id": 82,
+        "type": "exercise",
+        "english": "Can prayer be like a light? Where does it lead us?",
+        "farsi": "آیا نماز می تواند مانند نور باشد؟ ما را به کجا رهنمون می شود؟",
+        "audio_filename": "audio_unit1_82.mp3"
+    },
+    {
+        "id": 83,
+        "type": "intro",
+        "english": "Make my prayer, O my Lord, a fountain of living waters whereby I may live as long as Thy sovereignty endureth, and may make mention of Thee in every world of Thy worlds.",
+        "farsi": "پروردگارا، نمازم را چشمه حیات قرار ده تا با آن ذات من به دوام سلطنت تو باقی باشد و در هر عالمی از عوالمت تو را ذکر گوید.",
+        "audio_filename": "audio_unit1_83.mp3"
+    },
+    {
+        "id": 84,
+        "type": "exercise",
+        "english": "Can prayer be like a fountain of living waters?",
+        "farsi": "آیا نماز می تواند مانند کوثر حیوان باشد؟",
+        "audio_filename": "audio_unit1_84.mp3"
+    },
+    {
+        "id": 85,
+        "type": "chapter",
+        "english": "Obligatory Prayers",
+        "farsi": "بخش: نمازهای واجب",
+        "audio_filename": "audio_unit1_85.mp3"
+    },
+    {
+        "id": 86,
+        "type": "intro",
+        "english": "The daily obligatory prayers are three in number. The shortest one consists of a single verse which has to be recited once every twenty-four hours at midday.",
+        "farsi": "سه صلات روزانه نازل شده است. صلات صغیر شامل یک آیه است که در هر بیست و چهار ساعت یکبار حين زوال باید تلاوت شود.",
+        "audio_filename": "audio_unit1_86.mp3"
+    },
+    {
+        "id": 87,
+        "type": "intro",
+        "english": "The medium, which begins with the words 'The Lord is witness that there is none other God but He,' has to be recited three times a day, in the morning, at noon and in the evening.",
+        "farsi": "صلات وسطی که با این کلمات شروع می شود که شهد الله انه لا إله إلا هو باید سه بار در روز تلاوت شود در بکور و زوال و اصیل.",
+        "audio_filename": "audio_unit1_87.mp3"
+    },
+    {
+        "id": 88,
+        "type": "intro",
+        "english": "The long prayer, which is the most elaborate of the three, has to be recited only once in every twenty-four hours, and at any time one feels inclined to do so.",
+        "farsi": "صلات کبیر که مفصلترین این سه نماز است باید یکبار در هر بیست و چهار ساعت در هر حین که انسان تمایل به اداء آن داشته باشد تلاوت شود.",
+        "audio_filename": "audio_unit1_88.mp3"
+    },
+    {
+        "id": 89,
+        "type": "exercise",
+        "english": "How many daily obligatory prayers has Bahá'u'lláh revealed?",
+        "farsi": "حضرت بهاء الله چند نماز روزانه واجب نازل فرموده اند؟",
+        "audio_filename": "audio_unit1_89.mp3"
+    },
+    {
+        "id": 90,
+        "type": "exercise",
+        "english": "Should we recite all three prayers every day?",
+        "farsi": "آیا باید هر سه نماز را در هر روز تلاوت کنیم؟",
+        "audio_filename": "audio_unit1_90.mp3"
+    },
+    {
+        "id": 91,
+        "type": "exercise",
+        "english": "If we choose to say the Short Obligatory Prayer, how many times should we recite it?",
+        "farsi": "اگر انتخاب کنیم که صلات صغیر را تلاوت نماییم، باید چند بار؟",
+        "audio_filename": "audio_unit1_91.mp3"
+    },
+    {
+        "id": 92,
+        "type": "chapter",
+        "english": "Devotional Meetings",
+        "farsi": "بخش: جلسات دعا",
+        "audio_filename": "audio_unit1_92.mp3"
+    },
+    {
+        "id": 93,
+        "type": "intro",
+        "english": "Gather ye together with the utmost joy and fellowship and recite the verses revealed by the merciful Lord. By so doing the doors of true knowledge will be opened to your inner beings, and ye will then feel your souls endowed with steadfastness and your hearts filled with radiant joy.",
+        "farsi": "به نهایت سرور و دوستی جمع شوید و آیات نازله از قلم رب رحیم را تلاوت نمایید. ابواب عرفان حقیقی بر باطن شما مفتوح خواهد شد و نفس خود را مخصص به استقامت و قلب خود را مملو از سرور خواهید یافت.",
+        "audio_filename": "audio_unit1_93.mp3"
+    },
+    {
+        "id": 94,
+        "type": "intro",
+        "english": "Devotional meetings are occasions where any soul may enter, inhale the heavenly fragrances, experience the sweetness of prayer, meditate upon the Creative Word, be transported on the wings of the spirit, and commune with the one Beloved.",
+        "farsi": "جلسات دعا فرصتی است که هر فردی میتواند با ورود به آن از نفحات روحانی مستفیض گردد حلاوت دعا را تجربه نماید در کلام خلاق الهی تأمل کند و با بال و پر روح پرواز نموده به راز و نیاز با محبوب یکتا پردازد.",
+        "audio_filename": "audio_unit1_94.mp3"
+    },
+    {
+        "id": 95,
+        "type": "exercise",
+        "english": "With what spirit should we gather together when reciting the verses of God?",
+        "farsi": "با چه روحی باید گرد هم آییم و آیات الهی را تلاوت کنیم؟",
+        "audio_filename": "audio_unit1_95.mp3"
+    },
+    {
+        "id": 96,
+        "type": "exercise",
+        "english": "What will be the effect of our gathering together to recite the verses of God?",
+        "farsi": "تأثیر گرد هم آمدن ما به منظور تلاوت آیات الهی چه خواهد بود؟",
+        "audio_filename": "audio_unit1_96.mp3"
+    },
+    {
+        "id": 97,
+        "type": "chapter",
+        "english": "Unit 3: Life and Death",
+        "farsi": "بخش ۱: زندگی و مرگ",
+        "audio_filename": "audio_unit1_97.mp3"
+    },
+    {
+        "id": 98,
+        "type": "intro",
+        "english": "The human soul is exalted above matter and the physical world. The soul is not a combination of elements, it is not composed of many atoms, it is of one indivisible substance and therefore eternal. It is entirely out of the order of the physical creation; it is immortal!",
+        "farsi": "روح انسان از ماده و دنیای فیزیکی متعالی است. روح انسانی ترکیب نیست از عناصر مختلفه نیست بلکه مجرد از عناصر است و مقدس از طبایع چون مرکب از عناصر نیست اینست که حی و باقیست و در نشئه ابدیست.",
+        "audio_filename": "audio_unit1_98.mp3"
+    },
+    {
+        "id": 99,
+        "type": "exercise",
+        "english": "Is the human soul composed of various elements, as are material bodies?",
+        "farsi": "آیا روح انسان مانند اجسام مادی مرکب از عناصر مختلف است؟",
+        "audio_filename": "audio_unit1_99.mp3"
+    },
+    {
+        "id": 100,
+        "type": "exercise",
+        "english": "Is the human soul a physical entity?",
+        "farsi": "آیا روح انسان یک موجود فیزیکی است؟",
+        "audio_filename": "audio_unit1_100.mp3"
+    },
+    {
+        "id": 101,
+        "type": "chapter",
+        "english": "Soul and Body",
+        "farsi": "بخش: روح و جسم",
+        "audio_filename": "audio_unit1_101.mp3"
+    },
+    {
+        "id": 102,
+        "type": "intro",
+        "english": "The soul of man comes into being at conception.",
+        "farsi": "روح انسان از زمان لقاح به وجود می آید.",
+        "audio_filename": "audio_unit1_102.mp3"
+    },
+    {
+        "id": 103,
+        "type": "exercise",
+        "english": "When does the human soul come into being?",
+        "farsi": "روح انسان چه زمان به وجود می آید؟",
+        "audio_filename": "audio_unit1_103.mp3"
+    },
+    {
+        "id": 104,
+        "type": "intro",
+        "english": "The connection of the spirit with the body is even as the connection of this lamp with a mirror. If the mirror is polished and perfected, the light of the lamp appears therein, and if the mirror is broken or covered with dust, the light remains concealed.",
+        "farsi": "روح به جسد تعلق داشته مثل تعلق این سراج در آئینه چون آئینه صافی و کامل نور سراج در آن پدیدار و چون آئینه غبار برداشت یا آنکه شکست نور مخفی ماند.",
+        "audio_filename": "audio_unit1_104.mp3"
+    },
+    {
+        "id": 105,
+        "type": "exercise",
+        "english": "Use the image of a light and a mirror to describe the relationship between the soul and the body.",
+        "farsi": "از تمثیل نور و آینه استفاده کنید تا رابطه بین روح و جسم را توصیف نمایید.",
+        "audio_filename": "audio_unit1_105.mp3"
+    },
+    {
+        "id": 106,
+        "type": "exercise",
+        "english": "Does the soul enter the body?",
+        "farsi": "آیا روح داخل جسم می شود؟",
+        "audio_filename": "audio_unit1_106.mp3"
+    },
+    {
+        "id": 107,
+        "type": "chapter",
+        "english": "Life After Death",
+        "farsi": "بخش: زندگی پس از مرگ",
+        "audio_filename": "audio_unit1_107.mp3"
+    },
+    {
+        "id": 108,
+        "type": "intro",
+        "english": "The human spirit has a beginning but no end: It endures forever.",
+        "farsi": "روح انسانی را بدایت است ولی نهایت نه الى الأبد باقی است.",
+        "audio_filename": "audio_unit1_108.mp3"
+    },
+    {
+        "id": 109,
+        "type": "intro",
+        "english": "The spirit does not need a body, but the body needs spirit, or it cannot live. The soul can live without a body, but the body without a soul dies.",
+        "farsi": "روح محتاج به جسم نیست جسم محتاج به روح است روح به جسم زنده نیست جسم به روح زنده است.",
+        "audio_filename": "audio_unit1_109.mp3"
+    },
+    {
+        "id": 110,
+        "type": "exercise",
+        "english": "Does the body need a soul?",
+        "farsi": "آیا جسم محتاج به روح است؟",
+        "audio_filename": "audio_unit1_110.mp3"
+    },
+    {
+        "id": 111,
+        "type": "exercise",
+        "english": "Does the soul need the body?",
+        "farsi": "آیا روح محتاج به جسم است؟",
+        "audio_filename": "audio_unit1_111.mp3"
+    },
+    {
+        "id": 112,
+        "type": "exercise",
+        "english": "What happens to the connection between the body and the soul when we die?",
+        "farsi": "وقتی میمیریم برای رابطه بین جسم و روح چه اتفاقی می افتد؟",
+        "audio_filename": "audio_unit1_112.mp3"
+    },
+    {
+        "id": 113,
+        "type": "intro",
+        "english": "Know thou of a truth that the soul, after its separation from the body, will continue to progress until it attaineth the presence of God.",
+        "farsi": "این که از روح و بقای آن بعد از صعودش سؤال نمودی بدان که زمان صعود همچنان به پیش می رود تا در محضر خداوند حاضر شود.",
+        "audio_filename": "audio_unit1_113.mp3"
+    },
+    {
+        "id": 114,
+        "type": "exercise",
+        "english": "How long will the soul continue to progress after physical death?",
+        "farsi": "روح پس از مرگ جسمانی تا چه زمان به پیش می رود؟",
+        "audio_filename": "audio_unit1_114.mp3"
+    },
+    {
+        "id": 115,
+        "type": "intro",
+        "english": "Death proffereth unto every confident believer the cup that is life indeed. It bestoweth joy, and is the bearer of gladness. It conferreth the gift of everlasting life.",
+        "farsi": "موت از برای موقنین به مثابه کأس حیوان است فرح بخشد و سرور آرد و زندگانی پاینده عطا فرماید.",
+        "audio_filename": "audio_unit1_115.mp3"
+    },
+    {
+        "id": 116,
+        "type": "exercise",
+        "english": "Which of the following statements are true?\n\n* The soul of the human being comes from God and will return to Him.\n* For the confident believer, death is life.\n* Death is the bearer of gladness.\n* We should treasure the bounties of life yet not be afraid of death, for it is a messenger of joy.",
+        "farsi": "کدام یک از گزاره های زیر درست است؟\n\n* منشأ روح انسان خداوند است و به او بازخواهد گشت.\n* برای موقنین، مرگ زندگی است.\n* مرگ فرح و سرور می آورد.\n* ما باید مواهب زندگی را قدر بدانیم اما از مرگ نترسیم، زیرا مرگ بشارت است.",
+        "audio_filename": "audio_unit1_116.mp3"
+    },
+    {
+        "id": 117,
+        "type": "chapter",
+        "english": "The End",
+        "farsi": "بخش: پایان",
+        "audio_filename": "audio_unit1_117.mp3"
+    },
+    {
+        "id": 118,
+        "type": "intro",
+        "english": "You have completed Book 1. You have reflected on the meaning of human life, the importance of prayer, and the reading of the Writings. May you be confirmed in your path of service.",
+        "farsi": "شما کتاب ۱ را به پایان رساندید. در این واحد درباره معنای حیات انسان، اهمیت دعا و خواندن آثار مبارکه تأمل کردید. امیدواریم در مسیر خدمت مؤید باشید.",
+        "audio_filename": "audio_unit1_118.mp3"
+    }
+]
