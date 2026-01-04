@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import os
 import google.generativeai as genai
-from google.api_core.exceptions import ResourceExhausted
+from google.api_core.exceptions import ResourceExhausted, NotFound
 from gtts import gTTS
 import tempfile
 
@@ -56,7 +56,10 @@ def safe_generate_content(model, prompt):
         return model.generate_content(prompt)
     except ResourceExhausted:
         st.session_state.quota_exceeded = True
-        st.rerun() 
+        st.rerun()
+    except NotFound:
+        st.error("Model not found. Please update requirements.txt to 'google-generativeai>=0.7.0'")
+        return None
     except Exception as e:
         st.error(f"AI Error: {e}")
         return None
@@ -100,7 +103,7 @@ with st.sidebar:
 
     st.divider()
     
-    # 3. DICTIONARY
+    # 3. DICTIONARY (With Farsi Fix)
     st.subheader("📖 Dictionary")
     
     if st.session_state.quota_exceeded:
@@ -119,9 +122,10 @@ with st.sidebar:
                     st.error("❌ API Key is missing! Check your Secrets.")
                 else:
                     genai.configure(api_key=api_key)
-                    # *** SWITCHED TO STABLE MODEL ***
-                    model = genai.GenerativeModel('gemini-pro')
+                    # Use the modern Flash model
+                    model = genai.GenerativeModel('gemini-1.5-flash')
                     
+                    # --- FARSI LOGIC ---
                     if dict_lang == "Farsi":
                         prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
                     else:
@@ -168,8 +172,7 @@ with st.sidebar:
                 st.error("❌ API Key missing.")
             else:
                 genai.configure(api_key=api_key)
-                # *** SWITCHED TO STABLE MODEL ***
-                model = genai.GenerativeModel('gemini-pro')
+                model = genai.GenerativeModel('gemini-1.5-flash')
                 
                 if any("\u0600" <= char <= "\u06FF" for char in q):
                     sys_prompt = "Answer in Farsi (Persian)."
