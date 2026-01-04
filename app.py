@@ -128,7 +128,13 @@ with st.sidebar:
                 # Configure AI
                 genai.configure(api_key=api_key)
                 model = genai.GenerativeModel('gemini-3-flash-preview')
-                prompt = f"Define '{word}' in {dict_lang}. Mention Baha'i context."
+                
+                # --- FIXED PROMPT LOGIC FOR FARSI ---
+                if dict_lang == "Farsi":
+                    # We explicitly tell it to Write in Farsi (Persian)
+                    prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
+                else:
+                    prompt = f"Define '{word}' in English. Mention Baha'i context if applicable."
                 
                 # SAFE CALL
                 res = safe_generate_content(model, prompt)
@@ -147,6 +153,7 @@ with st.sidebar:
 
         # Display Results
         if st.session_state.dict_result:
+            # Right-to-Left alignment for Farsi
             if st.session_state.get("dict_lang") == "Farsi":
                 st.markdown(f"<div style='direction: rtl; text-align: right; background-color: #e8f4f8; padding: 10px; border-radius: 5px;'>{st.session_state.dict_result}</div>", unsafe_allow_html=True)
             else:
@@ -173,8 +180,15 @@ with st.sidebar:
                 genai.configure(api_key=api_key)
                 model = genai.GenerativeModel('gemini-3-flash-preview')
                 
+                # Check if user is asking in Farsi
+                if any("\u0600" <= char <= "\u06FF" for char in q):
+                    sys_prompt = "Answer in Farsi (Persian)."
+                else:
+                    sys_prompt = "Answer in English."
+
                 # SAFE CALL
-                res = safe_generate_content(model, f"Tutor for Ruhi Book 1. Question: {q}")
+                full_prompt = f"{sys_prompt} Tutor for Ruhi Book 1. Question: {q}"
+                res = safe_generate_content(model, full_prompt)
                 
                 if res:
                     st.session_state.msg.append({"role":"assistant", "content":res.text})
@@ -206,8 +220,6 @@ with st.container():
         def render_audio_tools(text_to_read):
             col_a, col_b = st.columns([0.2, 0.8])
             with col_a:
-                # Audio generation also uses an API, but usually not the same quota. 
-                # We can leave it active or disable it too. Here it stays active.
                 if st.button("🔊 Read Aloud", key=f"tts_{item['id']}"):
                     try:
                         tts = gTTS(text_to_read, lang='en')
