@@ -58,10 +58,10 @@ def safe_generate_content(model, prompt):
         st.session_state.quota_exceeded = True
         st.rerun()
     except NotFound:
-        st.error("Model not found. Please update requirements.txt to 'google-generativeai>=0.7.0'")
+        st.error("Server Error: The AI model was not found. Please ensure requirements.txt contains 'google-generativeai>=0.7.0'")
         return None
     except Exception as e:
-        st.error(f"AI Error: {e}")
+        st.error(f"AI Connection Error: {e}")
         return None
 
 # --- SIDEBAR ---
@@ -72,7 +72,7 @@ with st.sidebar:
         st.markdown("""
         <div class='quota-box'>
             <h3>⏳ Daily Limit Reached</h3>
-            <p>Please check back tomorrow!</p>
+            <p>The free AI quota has been used up for today.</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -103,7 +103,7 @@ with st.sidebar:
 
     st.divider()
     
-    # 3. DICTIONARY (With Farsi Fix)
+    # 3. DICTIONARY (With Strict Farsi Logic)
     st.subheader("📖 Dictionary")
     
     if st.session_state.quota_exceeded:
@@ -122,11 +122,12 @@ with st.sidebar:
                     st.error("❌ API Key is missing! Check your Secrets.")
                 else:
                     genai.configure(api_key=api_key)
-                    # Use the modern Flash model
+                    # Using the modern Flash model (Requires requirements.txt update)
                     model = genai.GenerativeModel('gemini-1.5-flash')
                     
                     # --- FARSI LOGIC ---
                     if dict_lang == "Farsi":
+                        # STRICT prompt to force Farsi response
                         prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
                     else:
                         prompt = f"Define '{word}' in English. Mention Baha'i context if applicable."
@@ -136,6 +137,7 @@ with st.sidebar:
                     
                     if res:
                         try:
+                            # Audio always in English for the word itself (libraries struggle with Farsi TTS)
                             tts = gTTS(word, lang='en')
                             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
                             tts.save(temp_file.name)
@@ -174,6 +176,7 @@ with st.sidebar:
                 genai.configure(api_key=api_key)
                 model = genai.GenerativeModel('gemini-1.5-flash')
                 
+                # Auto-detect Farsi input
                 if any("\u0600" <= char <= "\u06FF" for char in q):
                     sys_prompt = "Answer in Farsi (Persian)."
                 else:
