@@ -48,7 +48,7 @@ def nav(delta):
     new_page = st.session_state.page + delta
     if 0 <= new_page < total_pages: st.session_state.page = new_page
 
-# --- AI HELPER (FIXED MODEL NAME) ---
+# --- AI HELPER ---
 def safe_generate_content(model, prompt):
     if st.session_state.quota_exceeded:
         return None 
@@ -58,7 +58,6 @@ def safe_generate_content(model, prompt):
         st.session_state.quota_exceeded = True
         st.rerun() 
     except Exception as e:
-        # This will show you exactly WHY it failed if it happens again
         st.error(f"AI Error: {e}")
         return None
 
@@ -101,7 +100,7 @@ with st.sidebar:
 
     st.divider()
     
-    # 3. DICTIONARY (FIXED)
+    # 3. DICTIONARY
     st.subheader("📖 Dictionary")
     
     if st.session_state.quota_exceeded:
@@ -119,17 +118,15 @@ with st.sidebar:
                 if not api_key:
                     st.error("❌ API Key is missing! Check your Secrets.")
                 else:
-                    # SETUP AI
                     genai.configure(api_key=api_key)
-                    # *** FIXED MODEL NAME HERE ***
-                    model = genai.GenerativeModel('gemini-1.5-flash')
+                    # *** SWITCHED TO STABLE MODEL ***
+                    model = genai.GenerativeModel('gemini-pro')
                     
                     if dict_lang == "Farsi":
                         prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
                     else:
                         prompt = f"Define '{word}' in English. Mention Baha'i context if applicable."
                     
-                    # CALL AI
                     with st.spinner("Searching..."):
                         res = safe_generate_content(model, prompt)
                     
@@ -141,21 +138,20 @@ with st.sidebar:
                             st.session_state.dict_audio = temp_file.name
                             st.session_state.dict_result = res.text
                             st.session_state.dict_lang = dict_lang
-                        except:
-                            st.error("Audio generation failed.")
+                        except: st.error("Audio generation failed.")
 
         if st.session_state.dict_result:
             if st.session_state.get("dict_lang") == "Farsi":
                 st.markdown(f"<div style='direction: rtl; text-align: right; background-color: #e8f4f8; padding: 10px; border-radius: 5px;'>{st.session_state.dict_result}</div>", unsafe_allow_html=True)
             else:
                 st.info(st.session_state.dict_result)
-                
+        
         if st.session_state.dict_audio:
             st.audio(st.session_state.dict_audio)
 
     st.divider()
 
-    # 4. TUTOR (FIXED)
+    # 4. TUTOR
     st.subheader("💬 Tutor")
     if st.session_state.quota_exceeded:
         st.warning("Unavailable (Limit Reached)")
@@ -172,8 +168,8 @@ with st.sidebar:
                 st.error("❌ API Key missing.")
             else:
                 genai.configure(api_key=api_key)
-                # *** FIXED MODEL NAME HERE ***
-                model = genai.GenerativeModel('gemini-1.5-flash')
+                # *** SWITCHED TO STABLE MODEL ***
+                model = genai.GenerativeModel('gemini-pro')
                 
                 if any("\u0600" <= char <= "\u06FF" for char in q):
                     sys_prompt = "Answer in Farsi (Persian)."
