@@ -57,7 +57,7 @@ def safe_generate_content(model, prompt):
         st.session_state.quota_exceeded = True
         st.rerun()
     except NotFound:
-        st.error("Server Error: Model not found. Check the Debug list in the sidebar.")
+        st.error("Server Error: Model not found.")
         return None
     except Exception as e:
         st.error(f"AI Connection Error: {e}")
@@ -84,17 +84,6 @@ with st.sidebar:
         if st.session_state.quota_exceeded:
             st.session_state.quota_exceeded = False
             st.rerun()
-            
-    # --- DEBUGGER (Hidden by default now) ---
-    if api_key:
-        with st.expander("🐞 Debug: Supported Models"):
-            try:
-                genai.configure(api_key=api_key)
-                for m in genai.list_models():
-                    if 'generateContent' in m.supported_generation_methods:
-                        st.write(f"- `{m.name}`")
-            except Exception as e:
-                st.write("Could not list models.")
     
     st.divider()
     
@@ -125,7 +114,7 @@ with st.sidebar:
                     st.error("❌ API Key is missing! Check your Secrets.")
                 else:
                     genai.configure(api_key=api_key)
-                    # *** FIXED: Using the model from YOUR list ***
+                    # *** FIXED: Using the PROVEN model 'gemini-2.0-flash' ***
                     model = genai.GenerativeModel('gemini-2.0-flash')
                     
                     if dict_lang == "Farsi":
@@ -172,7 +161,7 @@ with st.sidebar:
                 st.error("❌ API Key missing.")
             else:
                 genai.configure(api_key=api_key)
-                # *** FIXED: Using the model from YOUR list ***
+                # *** FIXED: Using the PROVEN model 'gemini-2.0-flash' ***
                 model = genai.GenerativeModel('gemini-2.0-flash')
                 
                 if any("\u0600" <= char <= "\u06FF" for char in q):
