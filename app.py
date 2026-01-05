@@ -14,7 +14,6 @@ st.markdown("""
     .chapter-box { background-color: #2e7bcf; color: white; padding: 50px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
     .chapter-title { font-size: 40px; font-weight: bold; }
     .page-counter { text-align: center; padding-top: 15px; font-weight: bold; color: #555; }
-    .stRadio { background-color: #f0f2f6; padding: 10px; border-radius: 5px; }
     
     .quota-box {
         background-color: #ffebee;
@@ -58,7 +57,7 @@ def safe_generate_content(model, prompt):
         st.session_state.quota_exceeded = True
         st.rerun()
     except NotFound:
-        st.error("Server Error: Model not found. Please ensure code uses 'gemini-pro'.")
+        st.error("Server Error: Model not found. Check the Debug list in the sidebar.")
         return None
     except Exception as e:
         st.error(f"AI Connection Error: {e}")
@@ -69,12 +68,7 @@ with st.sidebar:
     st.header("🛠️ Tools")
     
     if st.session_state.quota_exceeded:
-        st.markdown("""
-        <div class='quota-box'>
-            <h3>⏳ Daily Limit Reached</h3>
-            <p>The free AI quota has been used up for today.</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown("<div class='quota-box'><h3>⏳ Daily Limit Reached</h3></div>", unsafe_allow_html=True)
     
     # 1. API KEY CHECK
     api_key = None
@@ -90,6 +84,17 @@ with st.sidebar:
         if st.session_state.quota_exceeded:
             st.session_state.quota_exceeded = False
             st.rerun()
+            
+    # --- DEBUGGER: SHOW AVAILABLE MODELS ---
+    if api_key:
+        with st.expander("🐞 Debug: Supported Models"):
+            try:
+                genai.configure(api_key=api_key)
+                for m in genai.list_models():
+                    if 'generateContent' in m.supported_generation_methods:
+                        st.write(f"- `{m.name}`")
+            except Exception as e:
+                st.write("Could not list models.")
     
     st.divider()
     
@@ -106,9 +111,7 @@ with st.sidebar:
     # 3. DICTIONARY
     st.subheader("📖 Dictionary")
     
-    if st.session_state.quota_exceeded:
-        st.warning("Unavailable (Limit Reached)")
-    else:
+    if not st.session_state.quota_exceeded:
         if "dict_result" not in st.session_state: st.session_state.dict_result = None
         if "dict_audio" not in st.session_state: st.session_state.dict_audio = None
 
@@ -122,8 +125,8 @@ with st.sidebar:
                     st.error("❌ API Key is missing! Check your Secrets.")
                 else:
                     genai.configure(api_key=api_key)
-                    # *** FIXED: USING CLASSIC PRO MODEL ***
-                    model = genai.GenerativeModel('gemini-pro')
+                    # *** TRYING FLASH MODEL AGAIN (Now that library is updated) ***
+                    model = genai.GenerativeModel('gemini-1.5-flash')
                     
                     if dict_lang == "Farsi":
                         prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
@@ -143,22 +146,20 @@ with st.sidebar:
                             st.session_state.dict_lang = dict_lang
                         except: st.error("Audio generation failed.")
 
-            if st.session_state.dict_result:
-                if st.session_state.get("dict_lang") == "Farsi":
-                    st.markdown(f"<div style='direction: rtl; text-align: right; background-color: #e8f4f8; padding: 10px; border-radius: 5px;'>{st.session_state.dict_result}</div>", unsafe_allow_html=True)
-                else:
-                    st.info(st.session_state.dict_result)
-            
-            if st.session_state.dict_audio:
-                st.audio(st.session_state.dict_audio)
+        if st.session_state.dict_result:
+            if st.session_state.get("dict_lang") == "Farsi":
+                st.markdown(f"<div style='direction: rtl; text-align: right; background-color: #e8f4f8; padding: 10px; border-radius: 5px;'>{st.session_state.dict_result}</div>", unsafe_allow_html=True)
+            else:
+                st.info(st.session_state.dict_result)
+        
+        if st.session_state.dict_audio:
+            st.audio(st.session_state.dict_audio)
 
     st.divider()
 
     # 4. TUTOR
     st.subheader("💬 Tutor")
-    if st.session_state.quota_exceeded:
-        st.warning("Unavailable (Limit Reached)")
-    else:
+    if not st.session_state.quota_exceeded:
         if "msg" not in st.session_state: st.session_state.msg = []
         for m in st.session_state.msg[-2:]:
             with st.chat_message(m["role"]): st.write(m["content"])
@@ -171,7 +172,7 @@ with st.sidebar:
                 st.error("❌ API Key missing.")
             else:
                 genai.configure(api_key=api_key)
-                model = genai.GenerativeModel('gemini-pro')
+                model = genai.GenerativeModel('gemini-1.5-flash')
                 
                 if any("\u0600" <= char <= "\u06FF" for char in q):
                     sys_prompt = "Answer in Farsi (Persian)."
