@@ -85,7 +85,7 @@ with st.sidebar:
             st.session_state.quota_exceeded = False
             st.rerun()
             
-    # --- DEBUGGER: SHOW AVAILABLE MODELS ---
+    # --- DEBUGGER (Hidden by default now) ---
     if api_key:
         with st.expander("🐞 Debug: Supported Models"):
             try:
@@ -125,8 +125,8 @@ with st.sidebar:
                     st.error("❌ API Key is missing! Check your Secrets.")
                 else:
                     genai.configure(api_key=api_key)
-                    # *** TRYING FLASH MODEL AGAIN (Now that library is updated) ***
-                    model = genai.GenerativeModel('gemini-1.5-flash')
+                    # *** FIXED: Using the model from YOUR list ***
+                    model = genai.GenerativeModel('gemini-2.0-flash')
                     
                     if dict_lang == "Farsi":
                         prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
@@ -172,7 +172,8 @@ with st.sidebar:
                 st.error("❌ API Key missing.")
             else:
                 genai.configure(api_key=api_key)
-                model = genai.GenerativeModel('gemini-1.5-flash')
+                # *** FIXED: Using the model from YOUR list ***
+                model = genai.GenerativeModel('gemini-2.0-flash')
                 
                 if any("\u0600" <= char <= "\u06FF" for char in q):
                     sys_prompt = "Answer in Farsi (Persian)."
