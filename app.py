@@ -58,8 +58,7 @@ def safe_generate_content(model, prompt):
         st.session_state.quota_exceeded = True
         st.rerun()
     except NotFound:
-        # Fallback error message
-        st.error("Server Error: The AI model was not found. Try 'gemini-pro' instead of 'flash'.")
+        st.error("Server Error: Model not found. Please ensure code uses 'gemini-pro'.")
         return None
     except Exception as e:
         st.error(f"AI Connection Error: {e}")
@@ -123,7 +122,7 @@ with st.sidebar:
                     st.error("❌ API Key is missing! Check your Secrets.")
                 else:
                     genai.configure(api_key=api_key)
-                    # *** FIXED: Switched to the reliable 'gemini-pro' model ***
+                    # *** FIXED: USING CLASSIC PRO MODEL ***
                     model = genai.GenerativeModel('gemini-pro')
                     
                     if dict_lang == "Farsi":
@@ -172,7 +171,6 @@ with st.sidebar:
                 st.error("❌ API Key missing.")
             else:
                 genai.configure(api_key=api_key)
-                # *** FIXED: Switched to 'gemini-pro' here too ***
                 model = genai.GenerativeModel('gemini-pro')
                 
                 if any("\u0600" <= char <= "\u06FF" for char in q):
