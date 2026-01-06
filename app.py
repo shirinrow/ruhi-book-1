@@ -24,12 +24,20 @@ st.markdown("""
         text-align: center;
         margin-bottom: 20px;
     }
+    .lock-screen {
+        text-align: center;
+        padding: 50px;
+        background-color: #f0f2f6;
+        border-radius: 10px;
+        margin-top: 50px;
+    }
     </style>
 """, unsafe_allow_html=True)
 
 # --- SESSION STATE ---
 if "page" not in st.session_state: st.session_state.page = 0
 if "quota_exceeded" not in st.session_state: st.session_state.quota_exceeded = False
+if "authenticated" not in st.session_state: st.session_state.authenticated = False
 
 # --- LOAD DATA ---
 @st.cache_data
@@ -63,171 +71,194 @@ def safe_generate_content(model, prompt):
         st.error(f"AI Connection Error: {e}")
         return None
 
-# --- SIDEBAR ---
+# --- SIDEBAR TOOLS ---
 with st.sidebar:
-    st.header("🛠️ Tools")
+    st.header("🔒 Security")
     
-    if st.session_state.quota_exceeded:
-        st.markdown("<div class='quota-box'><h3>⏳ Daily Limit Reached</h3></div>", unsafe_allow_html=True)
-    
-    # 1. API KEY CHECK
-    api_key = None
-    try:
-        if "GEMINI_API_KEY" in st.secrets:
-            api_key = st.secrets["GEMINI_API_KEY"]
-            st.success("✅ AI Connected")
-    except: pass
-    
-    user_key = st.text_input("API Key (Optional)", type="password")
-    if user_key:
-        api_key = user_key
+    # --- PASSWORD PROTECTION ---
+    access_code = st.text_input("Enter Access Code:", type="password")
+    if access_code == "ruhi19":  # <--- YOU CAN CHANGE THIS PASSWORD
+        st.session_state.authenticated = True
+        st.success("🔓 Unlocked")
+    else:
+        st.session_state.authenticated = False
+        if access_code:
+            st.error("Wrong Code")
+
+    st.divider()
+
+    if st.session_state.authenticated:
+        st.header("🛠️ Tools")
+        
         if st.session_state.quota_exceeded:
-            st.session_state.quota_exceeded = False
-            st.rerun()
-    
-    st.divider()
-    
-    # 2. NAVIGATION
-    with st.form("nav_form"):
-        st.subheader("🧭 Jump to Page")
-        page_jump = st.number_input("Page #", min_value=1, max_value=total_pages, value=st.session_state.page + 1)
-        if st.form_submit_button("Go"):
-            st.session_state.page = page_jump - 1
-            st.rerun()
+            st.markdown("<div class='quota-box'><h3>⏳ Daily Limit Reached</h3></div>", unsafe_allow_html=True)
+        
+        # 1. API KEY CHECK
+        api_key = None
+        try:
+            if "GEMINI_API_KEY" in st.secrets:
+                api_key = st.secrets["GEMINI_API_KEY"]
+                st.info("✅ AI Ready")
+        except: pass
+        
+        user_key = st.text_input("API Key (Optional)", type="password")
+        if user_key:
+            api_key = user_key
+            if st.session_state.quota_exceeded:
+                st.session_state.quota_exceeded = False
+                st.rerun()
+        
+        st.divider()
+        
+        # 2. NAVIGATION
+        with st.form("nav_form"):
+            st.subheader("🧭 Jump to Page")
+            page_jump = st.number_input("Page #", min_value=1, max_value=total_pages, value=st.session_state.page + 1)
+            if st.form_submit_button("Go"):
+                st.session_state.page = page_jump - 1
+                st.rerun()
 
-    st.divider()
-    
-    # 3. DICTIONARY
-    st.subheader("📖 Dictionary")
-    
-    if not st.session_state.quota_exceeded:
-        if "dict_result" not in st.session_state: st.session_state.dict_result = None
-        if "dict_audio" not in st.session_state: st.session_state.dict_audio = None
+        st.divider()
+        
+        # 3. DICTIONARY
+        st.subheader("📖 Dictionary")
+        
+        if not st.session_state.quota_exceeded:
+            if "dict_result" not in st.session_state: st.session_state.dict_result = None
+            if "dict_audio" not in st.session_state: st.session_state.dict_audio = None
 
-        with st.form("dict_form"):
-            dict_lang = st.radio("Language:", ["English", "Farsi"], horizontal=True)
-            word = st.text_input("Lookup Word:")
-            search_clicked = st.form_submit_button("Search Definition")
+            with st.form("dict_form"):
+                dict_lang = st.radio("Language:", ["English", "Farsi"], horizontal=True)
+                word = st.text_input("Lookup Word:")
+                search_clicked = st.form_submit_button("Search Definition")
+                
+                if search_clicked and word:
+                    if not api_key:
+                        st.error("❌ API Key is missing! Check your Secrets.")
+                    else:
+                        genai.configure(api_key=api_key)
+                        # USING PROVEN MODEL
+                        model = genai.GenerativeModel('gemini-2.0-flash')
+                        
+                        if dict_lang == "Farsi":
+                            prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
+                        else:
+                            prompt = f"Define '{word}' in English. Mention Baha'i context if applicable."
+                        
+                        with st.spinner("Searching..."):
+                            res = safe_generate_content(model, prompt)
+                        
+                        if res:
+                            try:
+                                tts = gTTS(word, lang='en')
+                                temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
+                                tts.save(temp_file.name)
+                                st.session_state.dict_audio = temp_file.name
+                                st.session_state.dict_result = res.text
+                                st.session_state.dict_lang = dict_lang
+                            except: st.error("Audio generation failed.")
+
+            if st.session_state.dict_result:
+                if st.session_state.get("dict_lang") == "Farsi":
+                    st.markdown(f"<div style='direction: rtl; text-align: right; background-color: #e8f4f8; padding: 10px; border-radius: 5px;'>{st.session_state.dict_result}</div>", unsafe_allow_html=True)
+                else:
+                    st.info(st.session_state.dict_result)
             
-            if search_clicked and word:
+            if st.session_state.dict_audio:
+                st.audio(st.session_state.dict_audio)
+
+        st.divider()
+
+        # 4. TUTOR
+        st.subheader("💬 Tutor")
+        if not st.session_state.quota_exceeded:
+            if "msg" not in st.session_state: st.session_state.msg = []
+            for m in st.session_state.msg[-2:]:
+                with st.chat_message(m["role"]): st.write(m["content"])
+                
+            if q := st.chat_input("Ask about the book..."):
+                st.session_state.msg.append({"role":"user", "content":q})
+                with st.chat_message("user"): st.write(q)
+                
                 if not api_key:
-                    st.error("❌ API Key is missing! Check your Secrets.")
+                    st.error("❌ API Key missing.")
                 else:
                     genai.configure(api_key=api_key)
-                    # *** FIXED: Using the PROVEN model 'gemini-2.0-flash' ***
                     model = genai.GenerativeModel('gemini-2.0-flash')
                     
-                    if dict_lang == "Farsi":
-                        prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
+                    if any("\u0600" <= char <= "\u06FF" for char in q):
+                        sys_prompt = "Answer in Farsi (Persian)."
                     else:
-                        prompt = f"Define '{word}' in English. Mention Baha'i context if applicable."
-                    
-                    with st.spinner("Searching..."):
-                        res = safe_generate_content(model, prompt)
+                        sys_prompt = "Answer in English."
+
+                    full_prompt = f"{sys_prompt} Tutor for Ruhi Book 1. Question: {q}"
+                    res = safe_generate_content(model, full_prompt)
                     
                     if res:
-                        try:
-                            tts = gTTS(word, lang='en')
-                            temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
-                            tts.save(temp_file.name)
-                            st.session_state.dict_audio = temp_file.name
-                            st.session_state.dict_result = res.text
-                            st.session_state.dict_lang = dict_lang
-                        except: st.error("Audio generation failed.")
-
-        if st.session_state.dict_result:
-            if st.session_state.get("dict_lang") == "Farsi":
-                st.markdown(f"<div style='direction: rtl; text-align: right; background-color: #e8f4f8; padding: 10px; border-radius: 5px;'>{st.session_state.dict_result}</div>", unsafe_allow_html=True)
-            else:
-                st.info(st.session_state.dict_result)
-        
-        if st.session_state.dict_audio:
-            st.audio(st.session_state.dict_audio)
-
-    st.divider()
-
-    # 4. TUTOR
-    st.subheader("💬 Tutor")
-    if not st.session_state.quota_exceeded:
-        if "msg" not in st.session_state: st.session_state.msg = []
-        for m in st.session_state.msg[-2:]:
-            with st.chat_message(m["role"]): st.write(m["content"])
-            
-        if q := st.chat_input("Ask about the book..."):
-            st.session_state.msg.append({"role":"user", "content":q})
-            with st.chat_message("user"): st.write(q)
-            
-            if not api_key:
-                st.error("❌ API Key missing.")
-            else:
-                genai.configure(api_key=api_key)
-                # *** FIXED: Using the PROVEN model 'gemini-2.0-flash' ***
-                model = genai.GenerativeModel('gemini-2.0-flash')
-                
-                if any("\u0600" <= char <= "\u06FF" for char in q):
-                    sys_prompt = "Answer in Farsi (Persian)."
-                else:
-                    sys_prompt = "Answer in English."
-
-                full_prompt = f"{sys_prompt} Tutor for Ruhi Book 1. Question: {q}"
-                res = safe_generate_content(model, full_prompt)
-                
-                if res:
-                    st.session_state.msg.append({"role":"assistant", "content":res.text})
-                    with st.chat_message("assistant"): st.write(res.text)
+                        st.session_state.msg.append({"role":"assistant", "content":res.text})
+                        with st.chat_message("assistant"): st.write(res.text)
 
 # --- MAIN APP DISPLAY ---
 st.title("Interactive Ruhi Book")
-st.progress((st.session_state.page + 1) / total_pages)
 
-if st.session_state.quota_exceeded:
-    st.error("⚠️ AI features paused (Daily Limit).")
+if not st.session_state.authenticated:
+    st.markdown("""
+    <div class='lock-screen'>
+        <h2>🔒 App Locked</h2>
+        <p>Please enter the <strong>Access Code</strong> in the sidebar to use this app.</p>
+        <p><em>(Hint: ruhi19)</em></p>
+    </div>
+    """, unsafe_allow_html=True)
+else:
+    st.progress((st.session_state.page + 1) / total_pages)
+    if st.session_state.quota_exceeded:
+        st.error("⚠️ AI features paused (Daily Limit).")
 
-with st.container():
-    if st.session_state.page == 0:
-        if os.path.exists("images/front_cover.jpg"): st.image("images/front_cover.jpg")
-        else: st.markdown("<div class='chapter-box'><h1>Ruhi Book 1</h1></div>", unsafe_allow_html=True)
-    elif st.session_state.page == total_pages - 1:
-        if os.path.exists("images/back_cover.jpg"): st.image("images/back_cover.jpg")
-        else: st.markdown("<div class='chapter-box'><h2>End of Book 1</h2></div>", unsafe_allow_html=True)
-    else:
-        item = book_data[st.session_state.page - 1]
-        
-        def render_audio_tools(text_to_read):
-            col_a, col_b = st.columns([0.2, 0.8])
-            with col_a:
-                if st.button("🔊 Read Aloud", key=f"tts_{item['id']}"):
-                    try:
-                        tts = gTTS(text_to_read, lang='en')
-                        with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as fp:
-                            tts.save(fp.name)
-                            st.audio(fp.name)
-                    except: st.error("Audio unavailable")
+    with st.container():
+        if st.session_state.page == 0:
+            if os.path.exists("images/front_cover.jpg"): st.image("images/front_cover.jpg")
+            else: st.markdown("<div class='chapter-box'><h1>Ruhi Book 1</h1></div>", unsafe_allow_html=True)
+        elif st.session_state.page == total_pages - 1:
+            if os.path.exists("images/back_cover.jpg"): st.image("images/back_cover.jpg")
+            else: st.markdown("<div class='chapter-box'><h2>End of Book 1</h2></div>", unsafe_allow_html=True)
+        else:
+            item = book_data[st.session_state.page - 1]
             
-        if item["type"] == "chapter":
-            st.markdown(f"<div class='chapter-box'><div class='chapter-title'>{item['english']}</div><div class='chapter-subtitle'>{item.get('farsi', '')}</div></div>", unsafe_allow_html=True)
-        elif item["type"] == "intro":
-            st.markdown(f"### {item['english']}")
-            render_audio_tools(item['english'])
-            tab1, tab2 = st.tabs(["👁️ View Translation", "🎙️ Practice Shadowing"])
-            with tab1: st.markdown(f"<div style='direction: rtl; text-align: right;'>{item['farsi']}</div>", unsafe_allow_html=True)
-            with tab2:
-                st.write("Record yourself:")
-                audio_value = st.audio_input("Record", key=f"rec_{item['id']}")
-                if audio_value: st.audio(audio_value)
-        elif item["type"] == "exercise":
-            st.markdown(f"### Question\n{item['english']}")
-            render_audio_tools(item['english'])
-            tab1, tab2, tab3 = st.tabs(["✍️ Write Answer", "👁️ Translation", "🎙️ Practice Shadowing"])
-            with tab1: st.text_area("Write here:", key=f"a_{item['id']}")
-            with tab2: st.markdown(f"<div style='direction: rtl; text-align: right;'>{item['farsi']}</div>", unsafe_allow_html=True)
-            with tab3:
-                st.write("Record yourself:")
-                audio_value = st.audio_input("Record", key=f"rec_{item['id']}")
-                if audio_value: st.audio(audio_value)
-            
-st.divider()
-c1, c2, c3 = st.columns([1,2,1])
-with c1: st.button("⬅️ Previous", on_click=nav, args=(-1,), use_container_width=True)
-with c2: st.markdown(f"<div class='page-counter'>Page {st.session_state.page + 1}/{total_pages}</div>", unsafe_allow_html=True)
-with c3: st.button("Next ➡️", on_click=nav, args=(1,), use_container_width=True)
+            def render_audio_tools(text_to_read):
+                col_a, col_b = st.columns([0.2, 0.8])
+                with col_a:
+                    if st.button("🔊 Read Aloud", key=f"tts_{item['id']}"):
+                        try:
+                            tts = gTTS(text_to_read, lang='en')
+                            with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as fp:
+                                tts.save(fp.name)
+                                st.audio(fp.name)
+                        except: st.error("Audio unavailable")
+                
+            if item["type"] == "chapter":
+                st.markdown(f"<div class='chapter-box'><div class='chapter-title'>{item['english']}</div><div class='chapter-subtitle'>{item.get('farsi', '')}</div></div>", unsafe_allow_html=True)
+            elif item["type"] == "intro":
+                st.markdown(f"### {item['english']}")
+                render_audio_tools(item['english'])
+                tab1, tab2 = st.tabs(["👁️ View Translation", "🎙️ Practice Shadowing"])
+                with tab1: st.markdown(f"<div style='direction: rtl; text-align: right;'>{item['farsi']}</div>", unsafe_allow_html=True)
+                with tab2:
+                    st.write("Record yourself:")
+                    audio_value = st.audio_input("Record", key=f"rec_{item['id']}")
+                    if audio_value: st.audio(audio_value)
+            elif item["type"] == "exercise":
+                st.markdown(f"### Question\n{item['english']}")
+                render_audio_tools(item['english'])
+                tab1, tab2, tab3 = st.tabs(["✍️ Write Answer", "👁️ Translation", "🎙️ Practice Shadowing"])
+                with tab1: st.text_area("Write here:", key=f"a_{item['id']}")
+                with tab2: st.markdown(f"<div style='direction: rtl; text-align: right;'>{item['farsi']}</div>", unsafe_allow_html=True)
+                with tab3:
+                    st.write("Record yourself:")
+                    audio_value = st.audio_input("Record", key=f"rec_{item['id']}")
+                    if audio_value: st.audio(audio_value)
+                
+    st.divider()
+    c1, c2, c3 = st.columns([1,2,1])
+    with c1: st.button("⬅️ Previous", on_click=nav, args=(-1,), use_container_width=True)
+    with c2: st.markdown(f"<div class='page-counter'>Page {st.session_state.page + 1}/{total_pages}</div>", unsafe_allow_html=True)
+    with c3: st.button("Next ➡️", on_click=nav, args=(1,), use_container_width=True)
