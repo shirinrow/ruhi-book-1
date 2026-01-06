@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import os
 import google.generativeai as genai
-from google.api_core.exceptions import ResourceExhausted, NotFound, InvalidArgument
+from google.api_core.exceptions import ResourceExhausted, NotFound
 from gtts import gTTS
 import tempfile
 
@@ -27,6 +27,7 @@ st.markdown("""
 # --- SESSION STATE ---
 if "page" not in st.session_state: st.session_state.page = 0
 if "authenticated" not in st.session_state: st.session_state.authenticated = False
+if "active_model_name" not in st.session_state: st.session_state.active_model_name = None
 
 # --- LOAD DATA ---
 @st.cache_data
@@ -44,15 +45,48 @@ def nav(delta):
     new_page = st.session_state.page + delta
     if 0 <= new_page < total_pages: st.session_state.page = new_page
 
-# --- AI HELPER ---
-def safe_generate_content(model, prompt):
+# --- SMART MODEL FINDER ---
+def get_best_model(api_key):
+    """Asks Google what models are available and picks the best one."""
+    genai.configure(api_key=api_key)
     try:
+        # 1. Try to find a specific robust model first
+        all_models = [m.name for m in genai.list_models()]
+        
+        # Priority list: 1.5 Flash (Fast) -> Pro (Stable) -> Any Flash -> Any Pro
+        if 'models/gemini-1.5-flash' in all_models: return 'gemini-1.5-flash'
+        if 'models/gemini-pro' in all_models: return 'gemini-pro'
+        
+        # 2. If exact names fail, search for ANY valid content generation model
+        for m in genai.list_models():
+            if 'generateContent' in m.supported_generation_methods:
+                if 'flash' in m.name: return m.name
+                if 'pro' in m.name: return m.name
+        
+        # 3. Fallback to the first available one
+        return all_models[0]
+    except:
+        # 4. Absolute fallback if listing fails
+        return 'gemini-pro'
+
+# --- AI HELPER ---
+def safe_generate_content(api_key, prompt):
+    try:
+        # Determine model if we haven't yet
+        if not st.session_state.active_model_name:
+             st.session_state.active_model_name = get_best_model(api_key)
+        
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel(st.session_state.active_model_name)
         return model.generate_content(prompt)
+        
     except ResourceExhausted:
         st.error("⏳ Daily Limit Reached. Please try again tomorrow.")
         return None
     except NotFound:
-        st.error("Server Error: Model not found.")
+        st.error(f"Server Error: The model '{st.session_state.active_model_name}' was not found.")
+        # Reset to try finding a new one next time
+        st.session_state.active_model_name = None 
         return None
     except Exception as e:
         st.error(f"AI Connection Error: {e}")
@@ -65,7 +99,7 @@ with st.sidebar:
     # --- PASSWORD PROTECTION ---
     access_code = st.text_input("Enter Access Code:", type="password")
     
-    if access_code == "ruhi19":  # <--- YOUR PASSWORD
+    if access_code == "ruhi19":  
         st.session_state.authenticated = True
         st.success("🔓 Unlocked")
     else:
@@ -117,17 +151,13 @@ with st.sidebar:
                 if not api_key:
                     st.error("❌ API Key is missing! Check your Secrets.")
                 else:
-                    genai.configure(api_key=api_key)
-                    # *** FIXED: USING THE STANDARD STABLE MODEL ***
-                    model = genai.GenerativeModel('gemini-1.5-flash')
-                    
                     if dict_lang == "Farsi":
                         prompt = f"Provide a clear definition of the word '{word}' in Farsi (Persian). Explain it simply. If it has a specific meaning in the Baha'i writings, mention that in Farsi as well. PLEASE WRITE THE ENTIRE RESPONSE IN FARSI."
                     else:
                         prompt = f"Define '{word}' in English. Mention Baha'i context if applicable."
                     
                     with st.spinner("Searching..."):
-                        res = safe_generate_content(model, prompt)
+                        res = safe_generate_content(api_key, prompt)
                     
                     if res:
                         try:
@@ -163,17 +193,14 @@ with st.sidebar:
             if not api_key:
                 st.error("❌ API Key missing.")
             else:
-                genai.configure(api_key=api_key)
-                # *** FIXED: USING THE STANDARD STABLE MODEL ***
-                model = genai.GenerativeModel('gemini-1.5-flash')
-                
                 if any("\u0600" <= char <= "\u06FF" for char in q):
                     sys_prompt = "Answer in Farsi (Persian)."
                 else:
                     sys_prompt = "Answer in English."
 
                 full_prompt = f"{sys_prompt} Tutor for Ruhi Book 1. Question: {q}"
-                res = safe_generate_content(model, full_prompt)
+                
+                res = safe_generate_content(api_key, full_prompt)
                 
                 if res:
                     st.session_state.msg.append({"role":"assistant", "content":res.text})
