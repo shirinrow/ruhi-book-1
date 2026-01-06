@@ -75,10 +75,15 @@ def safe_generate_content(model, prompt):
 with st.sidebar:
     st.header("🔒 Security")
     
-    # --- PASSWORD PROTECTION ---
+    # --- PASSWORD PROTECTION (NO HINT) ---
     access_code = st.text_input("Enter Access Code:", type="password")
-    if access_code == "ruhi19":  # <--- YOU CAN CHANGE THIS PASSWORD
+    
+    if access_code == "ruhi19":  # <--- YOUR PASSWORD
         st.session_state.authenticated = True
+        # AUTOMATICALLY CLEAR THE LIMIT ERROR ON LOGIN
+        if st.session_state.quota_exceeded:
+            st.session_state.quota_exceeded = False
+            st.rerun()
         st.success("🔓 Unlocked")
     else:
         st.session_state.authenticated = False
@@ -90,8 +95,12 @@ with st.sidebar:
     if st.session_state.authenticated:
         st.header("🛠️ Tools")
         
+        # --- RESET BUTTON FOR "DAILY LIMIT" ERROR ---
         if st.session_state.quota_exceeded:
             st.markdown("<div class='quota-box'><h3>⏳ Daily Limit Reached</h3></div>", unsafe_allow_html=True)
+            if st.button("♻️ Try Resetting Limit"):
+                st.session_state.quota_exceeded = False
+                st.rerun()
         
         # 1. API KEY CHECK
         api_key = None
@@ -206,7 +215,6 @@ if not st.session_state.authenticated:
     <div class='lock-screen'>
         <h2>🔒 App Locked</h2>
         <p>Please enter the <strong>Access Code</strong> in the sidebar to use this app.</p>
-        <p><em>(Hint: ruhi19)</em></p>
     </div>
     """, unsafe_allow_html=True)
 else:
